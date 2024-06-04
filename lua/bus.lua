@@ -4,40 +4,42 @@
 --- DateTime: 2024/5/21 18:07
 ---
 
-local bus = {
+bus = {
     id = 0,
     rooms = {},
 }
 
 function bus:publish(topic, data)
-    local m = self.rooms[topic]
-    for _, cbk in pairs(m) do
-        if cbk~=nil then
-            cbk(data)
+    timer.push(0, function()
+        local m = self.rooms[topic]
+        for id, cbk in pairs(m) do
+            if cbk~=Nil then
+                cbk(data)
+            end
         end
-    end
+    end)
 end
 
 function bus:subscribe(topic, callback)
     self.id = self.id+1
     local m = self.rooms[topic]
-    if m == nil then
+    if m == Nil then
         m = {}
         self.rooms[topic] = m
     end
     local id = self.id
     m[id] = callback
     return function()
-        m[id] = nil
+        m[id] = Nil
     end
 end
 
 function bus:remove(topic, id)
     local m = self.rooms[topic]
-    if m == nil then
+    if m == Nil then
         return
     end
-    m[id] = nil
+    m[id] = Nil
 end
 
 return bus

@@ -5,31 +5,18 @@
 ---
 
 local t2 = {
-    s1 = require("t2s1"),
-    s2 = require("t2s2"),
     name = "robot2",
     part = "",
-    currentState  = null
 }
 
-function t2:execute(line)
-    print(self.name)
-    self.line = line
+function t2:execute()
     changeState(self, "t2s1")
+    return self
 end
 
 
 function t2:onEvent(event)
-    --print(event)
     --print("三色灯状态", event.conf.plc:readI16(27,16))
-
-    --print("target", event.target)
-    --print("data", event.data)
-    --print("data.value", event.data.value)
-    --print("self.currentState", self.currentState.name)
-    if self.currentState ~= null then
-        self.currentState:onEvent(self, event)
-    end
 end
 
 return t2

@@ -12,7 +12,7 @@ function led_s2:exit(m)
 end
 
 function led_s2:onEvent(m, event)
-    if event.data.value == m.cmdStop then
+    if event.name == "stop" then
         changeState(m, "led_s1")
     end
 end

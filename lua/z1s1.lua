@@ -14,7 +14,7 @@ function z1s1:exit(m)
 end
 
 function z1s1:onEvent(m, event)
-    print("---------", m.name, event.target, event.data.value)
+    --print("---------", m.name, event.target, event.data.value)
     changeState(m, "z1s2")
 end
 

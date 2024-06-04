@@ -3,6 +3,7 @@
 --- Created by gepeng.
 --- DateTime: 2021/10/21 17:14
 ---
+require("bus")
 require("state")
 require("timer")
 require("db")
@@ -16,7 +17,7 @@ function main:Run()
     self.line = require("line")
     self.line:execute()
     self.line:run()
-    return self
+    return self.line
 end
 
 return main
