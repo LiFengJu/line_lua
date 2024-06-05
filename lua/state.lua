@@ -28,6 +28,7 @@ end
 
 function state:set(f)
     f(self)
+    print("state is changed")
     return self
 end
 

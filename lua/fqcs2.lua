@@ -7,6 +7,7 @@ function fqcs2:execute(m)
 end
 
 function fqcs2:exit(m)
+    print("fqcs1.exit is called")
 end
 
 function fqcs2:onEvent(m, event)

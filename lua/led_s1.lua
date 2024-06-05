@@ -10,6 +10,7 @@ function led_s1:execute(m)
 end
 
 function led_s1:exit(m)
+    print("led_s1.exit is called")
 end
 
 function led_s1:onEvent(m, event)

@@ -3,12 +3,12 @@ local led_s2 = {
 }
 
 function led_s2:execute(m, order)
-    print("æ­£åœ¨è¿è¡Œ....")
+    print("ÕıÔÚÔËĞĞ....")
 
 end
 
 function led_s2:exit(m)
-    print("å¯åŠ¨ç”Ÿäº§çº¿")
+    print("Æô¶¯Éú²úÏß")
 end
 
 function led_s2:onEvent(m, event)

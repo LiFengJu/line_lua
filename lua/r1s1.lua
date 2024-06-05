@@ -9,6 +9,7 @@ function r1s1:execute(m)
 end
 
 function r1s1:exit(m)
+    print("r1s1.exit is called")
 end
 
 function r1s1:onTimer()

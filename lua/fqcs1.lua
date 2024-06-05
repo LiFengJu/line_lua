@@ -9,6 +9,7 @@ function fqcs1:execute(m)
 end
 
 function fqcs1:exit(m)
+    print("fqcs1.exit is called")
 end
 
 function fqcs1:onEvent(m, event)

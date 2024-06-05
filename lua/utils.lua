@@ -8,16 +8,9 @@ function changeState(machine, state_name, args)
     local state = require(state_name)
     if machine.currentState ~= nil then
         machine.currentState:exit(machine)
-        --print("from ", (machine.currentState.name or ""))
     end
-    --local s = ""
-    --if machine.currentState~=nil then
-    --    s = machine.name.."-->"
-    --end
-    --print(s..(state.name or ""))
     machine.currentState = state
     machine.currentState:execute(machine, args)
-
 end
 
 function has_method(object, method_name)

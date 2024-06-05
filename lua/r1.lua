@@ -14,4 +14,8 @@ function r1:execute()
     return self
 end
 
+function r1:onEvent(event)
+    --print("三色灯状态", event.conf.plc:readI16(27,16))
+end
+
 return r1

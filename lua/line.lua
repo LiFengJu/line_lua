@@ -3,7 +3,7 @@
 --- Created by gepen.
 --- DateTime: 2024/5/22 5:12
 ---
---- line æŸ”æ€§çº¿
+--- line ÈáĞÔÏß
 ---
 local line = {
     machines = { "r1", "r2", "r3", "r4", "w1", "w2", "w3", "w4", "z1", "z2", "t1", "t2", "fqc", "led" },
@@ -70,6 +70,7 @@ end
 
 function line:onEvent()
     return function(event)
+        print(self.name, "onEvent", event.data)
     end
 end
 
