@@ -4,18 +4,20 @@
 --- DateTime: 2024/5/21 18:07
 ---
 
-local bus = {
+bus = {
     id = 0,
     rooms = {},
 }
 
 function bus:publish(topic, data)
-    local m = self.rooms[topic]
-    for _, cbk in pairs(m) do
-        if cbk~=nil then
-            cbk(data)
+    timer.push(0, function()
+        local m = self.rooms[topic]
+        for id, cbk in pairs(m) do
+            if cbk~=nil then
+                cbk(data)
+            end
         end
-    end
+    end)
 end
 
 function bus:subscribe(topic, callback)

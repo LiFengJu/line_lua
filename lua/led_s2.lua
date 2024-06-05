@@ -3,16 +3,16 @@ local led_s2 = {
 }
 
 function led_s2:execute(m, order)
-    print("ÕıÔÚÔËĞĞ....")
+    print("æ­£åœ¨è¿è¡Œ....")
 
 end
 
 function led_s2:exit(m)
-    print("Æô¶¯Éú²úÏß")
+    print("å¯åŠ¨ç”Ÿäº§çº¿")
 end
 
 function led_s2:onEvent(m, event)
-    if event.data.value == m.cmdStop then
+    if event.name == "stop" then
         changeState(m, "led_s1")
     end
 end

@@ -9,11 +9,25 @@ state = {
     led = {
         color = "",
     },
+    stock = 0,
 }
+
+function state:setStock(n)
+    return self:set(function(this)
+        this.stock = n
+        return this
+    end)
+end
+
+function state:setLed(color)
+    return self:set(function(this)
+        this.led.color = color
+        return this
+    end)
+end
 
 function state:set(f)
     f(self)
-    print("state is changed")
     return self
 end
 

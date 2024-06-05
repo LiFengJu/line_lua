@@ -5,31 +5,18 @@
 ---
 
 local fqc = {
-    s1 = require("fqcs1"),
-    s2 = require("fqcs2"),
     name = "fqc",
     part = "",
-    currentState  = null
 }
 
-function fqc:execute(line)
-    print("fqc.execute")
-    self.line = line
+function fqc:execute()
     changeState(self, "fqcs1")
+    return self
 end
 
 
 function fqc:onEvent(event)
-    print(event)
     --print("三色灯状态", event.conf.plc:readI16(27,16))
-
-    --print("target", event.target)
-    --print("data", event.data)
-    --print("data.value", event.data.value)
-    --print("self.currentState", self.currentState.name)
-    if self.currentState ~= null then
-        self.currentState:onEvent(self, event)
-    end
 end
 
 return fqc
