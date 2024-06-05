@@ -5,8 +5,9 @@
 ---
 
 local r3 = {
-    name = "robot 3",
+    name = "arm_3",
     bus = "516.am",
+    currentState = nil,
 }
 
 function r3:execute()

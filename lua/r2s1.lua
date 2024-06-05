@@ -1,5 +1,5 @@
 local r2s1 = {
-    name = "r2 idle state"
+    name = "idle state"
 }
 
 function r2s1:execute(m)

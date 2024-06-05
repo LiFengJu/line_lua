@@ -1,5 +1,5 @@
 local r3s1 = {
-    name = "r3 idle state"
+    name = "idle state"
 }
 
 function r3s1:execute(m)

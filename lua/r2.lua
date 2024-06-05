@@ -5,7 +5,8 @@
 ---
 
 local r2 = {
-    name = "robot 2",
+    name = "arm_2",
+    currentState = nil,
 }
 
 function r2:execute()
@@ -15,6 +16,7 @@ end
 
 
 function r2:onEvent(event)
+
 end
 
 return r2

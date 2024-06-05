@@ -11,6 +11,7 @@ function changeState(machine, state_name, args)
     end
     machine.currentState = state
     machine.currentState:execute(machine, args)
+    print(machine.name ..' change state to '..state_name)
 end
 
 function has_method(object, method_name)

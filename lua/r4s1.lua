@@ -3,8 +3,8 @@ local r4s1 = {
 }
 
 function r4s1:execute(m)
+    self.m = m
     print("r4s1.execute")
-    print(m.name, self.name)
     --print("三色灯状态", m.conf.plc:readI16(27,16))
     --print("订单号", m.conf.plc:readString(26,0,8))
 end

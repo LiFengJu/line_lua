@@ -5,7 +5,8 @@
 ---
 
 local r4 = {
-    name = "robot 2",
+    name = "arm_4",
+    currentState = nil,
 }
 
 function r4:execute()

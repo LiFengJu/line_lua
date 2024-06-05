@@ -5,7 +5,7 @@
 ---
 
 local w1 = {
-    name = "robot1",
+    name = "write_1",
     part = "",
 }
 

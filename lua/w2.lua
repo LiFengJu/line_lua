@@ -5,7 +5,7 @@
 ---
 
 local w2 = {
-    name = "w2",
+    name = "write_2",
     part = "",
 }
 

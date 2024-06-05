@@ -5,8 +5,9 @@
 ---
 
 local r1 = {
-    name = "r1",
+    name = "arm_1",
     part = "",
+    currentState = nil,
 }
 
 function r1:execute()

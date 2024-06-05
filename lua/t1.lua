@@ -5,7 +5,7 @@
 ---
 
 local t1 = {
-    name = "robot1",
+    name = "transport_1",
     part = "",
 }
 

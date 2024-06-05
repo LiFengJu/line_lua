@@ -5,7 +5,7 @@
 ---
 
 local z2 = {
-    name = "robot1",
+    name = "stop_2",
     part = "",
 }
 

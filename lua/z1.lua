@@ -5,7 +5,7 @@
 ---
 
 local z1 = {
-    name = "robot1",
+    name = "block_1",
     part = "",
 }
 

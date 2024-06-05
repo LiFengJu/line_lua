@@ -5,7 +5,7 @@
 ---
 
 local p2 = {
-    name = "p1",
+    name = "order_1",
     pt = {10,0,10,0}
 }
 
