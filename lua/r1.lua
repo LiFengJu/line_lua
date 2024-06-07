@@ -5,17 +5,28 @@
 ---
 
 local r1 = {
-    name = "arm_1",
+    name = "robot_arm_1",
     part = "",
     currentState = nil,
+    Stats ={'r1s1','r1s2','r1s3'}
 }
 
 function r1:execute()
     changeState(self, "r1s1")
+    for _,state_name in ipairs(self.Stats) do
+        state = require(state_name)
+        self.line:subscribe(function(event)
+            if has_method(state, "onEvent") then
+                state:onEvent(event)
+            end
+        end)
+    end
     return self
+
 end
 
 function r1:onEvent(event)
+
     --print("三色灯状态", event.conf.plc:readI16(27,16))
 end
 

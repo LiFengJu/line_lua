@@ -5,7 +5,7 @@
 ---
 
 local r2 = {
-    name = "arm_2",
+    name = "robot_arm_2",
     currentState = nil,
 }
 

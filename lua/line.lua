@@ -16,7 +16,7 @@ function line:execute()
         m.line = self
         m:execute()
         if has_method(m, "onEvent") or (m.currentState ~= nil and has_method(m.currentState, "onEvent")) then
-            self:subscribe(function(event)
+            self:subscribe(m.name,function(event)
                 if has_method(m, "onEvent") then
                     m:onEvent(event)
                 end
@@ -26,7 +26,7 @@ function line:execute()
             end)
         end
     end
-    self:subscribe(function(event)
+    self:subscribe(self.name, function(event)
         self:onEvent(event)
     end)
     return self
@@ -64,8 +64,8 @@ function line:publish(data)
     bus:publish(self.name, data)
 end
 
-function line:subscribe(callback)
-    bus:subscribe(self.name, callback)
+function line:subscribe(subscriber, callback)
+    bus:subscribe(subscriber, self.name, callback)
 end
 
 function line:onEvent()

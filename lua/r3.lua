@@ -5,7 +5,7 @@
 ---
 
 local r3 = {
-    name = "arm_3",
+    name = "robot_arm_3",
     bus = "516.am",
     currentState = nil,
 }

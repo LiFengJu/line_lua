@@ -20,17 +20,16 @@ function bus:publish(topic, data)
     end)
 end
 
-function bus:subscribe(topic, callback)
-    self.id = self.id+1
+function bus:subscribe(publisher, callback)
     local m = self.rooms[topic]
     if m == nil then
         m = {}
         self.rooms[topic] = m
     end
-    local id = self.id
-    m[id] = callback
+    --????????????????
+    m[publisher] = callback
     return function()
-        m[id] = nil
+        m[publisher] = nil
     end
 end
 
