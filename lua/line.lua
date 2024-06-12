@@ -15,21 +15,7 @@ function line:execute()
         local m = require(name)
         m.line = self
         m:execute()
-        if has_method(m, "onEvent") or (m.currentState ~= nil and has_method(m.currentState, "onEvent")) then
-            self:subscribe(m.name,function(event)
-                if has_method(m, "onEvent") then
-                    m:onEvent(event)
-                end
-                if m.currentState ~= nil and has_method(m.currentState, "onEvent") then
-                    m.currentState:onEvent(m, event)
-                end
-            end)
-        end
     end
-    self:subscribe(self.name, function(event)
-        self:onEvent(event)
-    end)
-    return self
 end
 
 function line:power(b)
@@ -41,37 +27,21 @@ end
 function line:run()
     state.running = true
     state:setLed("green")
-    self:publish({
-        name = "run"
-    })
+    bus:publish(self.name,'run', {})
 end
 
 function line:stop()
     state.running = false
     state.led.color = "yellow"
-    self:publish({
-        name = "stop"
-    })
+    self:publish(self.name,'stop', {})
 end
 
 function line:pause()
-    self:publish({
-        name = "pause"
-    })
+    self:publish(self.name,'pause',{})
 end
 
-function line:publish(data)
-    bus:publish(self.name, data)
-end
+function line:onEvent(data)
 
-function line:subscribe(subscriber, callback)
-    bus:subscribe(subscriber, self.name, callback)
-end
-
-function line:onEvent()
-    return function(event)
-        print(self.name, "onEvent", event.data)
-    end
 end
 
 return line

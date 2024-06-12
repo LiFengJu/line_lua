@@ -5,7 +5,7 @@
 ---
 
 local z1 = {
-    name = "block_1",
+    name = "z1",
     part = "",
 }
 
@@ -15,6 +15,7 @@ function z1:execute()
 end
 
 function z1:onEvent(event)
+
 end
 
 return z1

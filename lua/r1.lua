@@ -8,26 +8,21 @@ local r1 = {
     name = "robot_arm_1",
     part = "",
     currentState = nil,
-    Stats ={'r1s1','r1s2','r1s3'}
+    Stats ={'r1s1','r1s2','r1s3'},
+    line = nil,
 }
 
 function r1:execute()
     changeState(self, "r1s1")
-    for _,state_name in ipairs(self.Stats) do
-        state = require(state_name)
-        self.line:subscribe(function(event)
-            if has_method(state, "onEvent") then
-                state:onEvent(event)
-            end
-        end)
+    for _, s in ipairs(self.Stats) do
+        local state = require(s)
+        state.m = self
+        state:init_subscribe()
     end
-    return self
-
 end
 
-function r1:onEvent(event)
+function r1:onEvent(data)
 
-    --print("三色灯状态", event.conf.plc:readI16(27,16))
 end
 
 return r1

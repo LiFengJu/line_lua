@@ -9,9 +9,9 @@ bus = {
     rooms = {},
 }
 
-function bus:publish(topic, data)
+function bus:publish(publisher, topic, data)
     timer.push(0, function()
-        local m = self.rooms[topic]
+        local m = self.rooms[publisher][topic]
         for id, cbk in pairs(m) do
             if cbk~=nil then
                 cbk(data)
@@ -20,17 +20,11 @@ function bus:publish(topic, data)
     end)
 end
 
-function bus:subscribe(publisher, callback)
-    local m = self.rooms[topic]
-    if m == nil then
-        m = {}
-        self.rooms[topic] = m
+function bus:subscribe(publisher,topic, callback)
+    if self.rooms[publisher][topic] == nil then
+        self.rooms[publisher][topic] = {}
     end
-    --????????????????
-    m[publisher] = callback
-    return function()
-        m[publisher] = nil
-    end
+    table.insert(self.rooms[publisher][topic], callback)
 end
 
 function bus:remove(topic, id)
