@@ -1,4 +1,5 @@
-a = 'a'
-b = 'b'
+function f1(a,b,c)
+    print(a,b)
+end
 
-print(a,b)
+f1(1,2)

@@ -1,21 +1,30 @@
 local t1s1 = {
-    name = "t1 down"
+    name = "t1s1",
+    func = 'idle',
+    m = nil
 }
 
+function t1s1:init_subscribe()
+    bus:subscribe('r1', 'loaded', function()
+        t1s1:onEvent({topic = 'loaded'})
+    end)
+    bus:subscribe('r2','unloaded',function()
+        t1s1:onEvent({topic = 'unloaded'})
+    end)
+end
+
+
 function t1s1:execute(m)
-    print("t1s1.execute")
-    print(m.name, self.name)
-    --print("三色灯状态", m.conf.plc:readI16(27,16))
-    --print("订单号", m.conf.plc:readString(26,0,8))
+    print(m.name..' is '..self.func)
+
 end
 
 function t1s1:exit(m)
     print("t1s1.exit is called")
 end
 
-function t1s1:onEvent(m, event)
-    print("---------", m.name, event)
-    changeState(m, "t1s2")
+function t1s1:onEvent(data)
+    changeState(self.m, "t1s2",data)
 end
 
 return t1s1

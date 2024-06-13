@@ -5,16 +5,17 @@ local r1s3 = {
 }
 
 function r1s3:init_subscribe()
-    bus:subscribe('r1s3', 'loaded', function(data)
+    bus:subscribe('r1', 'loaded', function()
         r1s3:onEvent()
     end)
 end
 
 
-function r1s3:execute()
-    print(self.m.name..' is '..self.func)
-    timer.push(5, function(id)
-        bus:publish(self.name,'loaded',{})
+function r1s3:execute(m)
+    print(m.name..' is '..self.func)
+    timer.push(5, function()
+        print(m.name..'loaded')
+        bus:publish(m.name,'loaded')
     end)
 end
 

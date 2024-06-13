@@ -1,11 +1,12 @@
 local t1 = {
     name = "transport_1",
-    part = "",
+    currentState = nil,
+    states ={'t1s1','t1s2'},
+    line = nil
 }
 
 function t1:execute()
     changeState(self, "t1s1")
-    return self
 end
 
 

@@ -5,7 +5,7 @@ local r1s1 = {
 }
 
 function r1s1:init_subscribe()
-    bus:subscribe('am516', 'run', function(data)
+    bus:subscribe('am516', 'run', function()
         r1s1:onEvent()
     end)
     --bus:subscribe()
@@ -13,7 +13,7 @@ end
 
 
 function r1s1:execute(m)
-    print(self.m.name..' is '..self.func)
+    print(m.name..' is '..self.func)
 end
 
 function r1s1:onEvent(data)

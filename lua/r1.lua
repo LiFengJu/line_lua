@@ -6,19 +6,13 @@
 
 local r1 = {
     name = "robot_arm_1",
-    part = "",
     currentState = nil,
-    Stats ={'r1s1','r1s2','r1s3'},
+    states ={'r1s1','r1s2','r1s3'},
     line = nil,
 }
 
 function r1:execute()
     changeState(self, "r1s1")
-    for _, s in ipairs(self.Stats) do
-        local state = require(s)
-        state.m = self
-        state:init_subscribe()
-    end
 end
 
 function r1:onEvent(data)

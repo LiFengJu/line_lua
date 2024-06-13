@@ -15,12 +15,11 @@ function line:execute()
         local m = require(name)
         m.line = self
         m:execute()
-    end
-end
-
-function line:power(b)
-    for _, m in ipairs(self.machines) do
-        m:execute(self)
+        for _, s in ipairs(m.states) do
+            local state = require(s)
+            state.m = m
+            state:init_subscribe()
+        end
     end
 end
 

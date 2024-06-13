@@ -5,16 +5,16 @@ local r1s2 = {
 }
 
 function r1s2:init_subscribe()
-    bus:subscribe('r1s2', 'found', function(data)
+    bus:subscribe('r1', 'found', function()
         r1s2:onEvent()
     end)
 end
 
-function r1s2:execute()
-    print(self.m.name..' is '..self.func)
-    time.push(2, function(id)
-        print(self.m.name..'found')
-        bus:publish(self.name, 'found',{})
+function r1s2:execute(m)
+    print(m.name..' is '..self.func)
+    time.push(2, function()
+        print(m.name..'found')
+        bus:publish(m.name, 'found')
     end)
 end
 

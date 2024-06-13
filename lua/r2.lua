@@ -7,6 +7,8 @@
 local r2 = {
     name = "robot_arm_2",
     currentState = nil,
+    states ={'r2s1','r2s2','r2s3'},
+    line = nil,
 }
 
 function r2:execute()
