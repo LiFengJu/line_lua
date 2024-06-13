@@ -7,17 +7,16 @@
 local r2 = {
     name = "robot_arm_2",
     currentState = nil,
-    states ={'r2s1','r2s2','r2s3'},
+    states ={'r2s1','r2s2','r2s3','r2s4'},
     line = nil,
 }
 
 function r2:execute()
     changeState(self, "r2s1")
-    return self
 end
 
 
-function r2:onEvent(event)
+function r2:onEvent(data)
 
 end
 

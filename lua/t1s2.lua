@@ -15,12 +15,12 @@ function t1s2:execute(m,data)
     print(self.m.name..' is '..self.func)
     if data.topic == 'unloaded' then
         time.push(2,function()
-            print(m.name..'loaded')
+            print(m.name..'arrive z1')
             bus:publish(m.name,'arrive z1')
         end)
     elseif data.topic == 'loaded' then
         time.push(2,function()
-            print(m.name..'unloaded')
+            print(m.name..'left')
             bus:publish(m.name,'left')
         end)
     end
