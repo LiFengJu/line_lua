@@ -1,29 +1,34 @@
 local r2s2 = {
-    name = "r2s2",
-    func = "finding",
-    m = nil
+    name = 'r2s2',
+    func = 'finding order',
+    m = nil,
+    load_to = '1',
 }
 
-function init_subscribe()
-    bus:subscribe('r2','found', function()
-        r2s1:onEvent()
-    end)
+function r2s2:init_subscribe()
 end
 
-function execute(m)
+function r2s2:execute(m)
     print(m.name..' is '..self.func)
-    time.push(2, function()
-        print(m.name..'found')
-        bus:publish(m.name, 'found')
+    timer.push(5, function()
+        print(m.name..' found')
+        self:onEvent()
     end)
 end
 
-function exit(m)
-    print("r2s1.exit is called")
+function r2s2:exit(m)
+    print("r2s2.exit is called")
 end
 
-function onEvent(data)
-    changeState(self.m, "r2s3")
+function r2s2:onEvent(data)
+    if self.load_to == '1' then
+        changeState(self.m, "r2s3")
+        self.load_to = '2'
+    else
+        changeState(self.m, "r2s4")
+        self.load_to = '1'
+    end
 end
 
+return r2s2
 

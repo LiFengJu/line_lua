@@ -4,19 +4,19 @@ local r2s1 = {
     m = nil,
 }
 function r2s1:init_subscribe()
-    bus:subscribe('t1', 'arrive z1', function()
-        r2s1:onEvent({topic = 'arrive z1'})
+    bus:subscribe('r1', 'arrive_z1', function()
+        r2s1:onEvent({publisher='r1'})
     end)
-    bus:subscribe('w1', 'finished_A', function()
-        r2s1:onEvent({topic='finished_A'})
+    bus:subscribe('w1', 'finished', function()
+        r2s1:onEvent({publisher='w1'})
     end)
-    bus:subscribe('w2', 'finished_B', function()
-        r2s1:onEvent({topic='finished_B'})
+    bus:subscribe('w2', 'finished', function()
+        r2s1:onEvent({publisher='w2'})
     end)
 end
 
 function r2s1:execute(m)
-    print(m.name..' is '..self.func)
+    --print(m.name..' is '..self.func)
 end
 
 function r2s1:exit(m)
@@ -24,10 +24,12 @@ function r2s1:exit(m)
 end
 
 function r2s1:onEvent(data)
-    if data.topic == 'arrive z1' then
+    if data.publisher == 'r1' then
         changeState(self.m, "r2s2")
-    else
-        changeState(self.m, "r2s4")
+    elseif data.publisher == 'w1' then
+        changeState(self.m, "r2s5")
+    elseif data.publisher == 'w2' then
+        changeState(self.m, "r2s6")
     end
 end
 

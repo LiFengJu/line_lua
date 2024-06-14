@@ -10,17 +10,19 @@ bus = {
 }
 
 function bus:publish(publisher, topic, data)
-    timer.push(0, function()
-        local m = self.rooms[publisher][topic]
-        for id, cbk in pairs(m) do
-            if cbk~=nil then
-                cbk(data)
-            end
+    local m = self.rooms[publisher][topic]
+    --print(publisher..' '..topic..' | length: '..#m)
+    for id, cbk in pairs(m) do
+        if cbk~=nil then
+            cbk(data)
         end
-    end)
+    end
 end
 
-function bus:subscribe(publisher,topic, callback)
+function bus:subscribe(publisher, topic, callback)
+    if self.rooms[publisher] == nil then
+        self.rooms[publisher] = {}
+    end
     if self.rooms[publisher][topic] == nil then
         self.rooms[publisher][topic] = {}
     end

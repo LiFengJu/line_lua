@@ -1,9 +1,14 @@
-function f1(a)
-    if a.name == 1 then
-        print(a)
-    else
-        print('no')
+a = {
+    rooms ={}
+}
+
+if a.rooms['1']== nil then
+    a.rooms['1'] = {}
+    if a.rooms['1']['2'] == nil then
+        a.rooms['1']['2'] = {}
     end
+    table.insert(a.rooms['1']['2'], 1)
 end
 
-f1()
+print(a.rooms['1']['2'][1])
+

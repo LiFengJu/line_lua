@@ -8,12 +8,14 @@ function r1s1:init_subscribe()
     bus:subscribe('am516', 'run', function()
         r1s1:onEvent()
     end)
-    --bus:subscribe()
+    bus:subscribe('r4','start',function()
+        r1s1:onEvent()
+    end)
 end
 
 
 function r1s1:execute(m)
-    print(m.name..' is '..self.func)
+    --print(m.name..' is '..self.func)
 end
 
 function r1s1:onEvent(data)

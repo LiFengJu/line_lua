@@ -1,18 +1,26 @@
 local fqcs2 = {
-    name = "fqc up"
+    name = "fqcs2",
+    func = 'checking'
 }
+function fqcs2:init_subscribe()
+
+end
 
 function fqcs2:execute(m)
-    return self
+    print(m.name..' is '..self.func)
+    timer.push(8, function()
+        print(m.name..' checked')
+        self:onEvent()
+        bus:publish(m.name,'checked')
+    end)
 end
 
 function fqcs2:exit(m)
-    print("fqcs1.exit is called")
+    print("fqcs2.exit is called")
 end
 
-function fqcs2:onEvent(m, event)
-    --print("fqcs2:onEvent", m.name, event.target, event.data.value)
-    --changeState(m, "fqcs3")
+function fqcs2:onEvent(data)
+    changeState(self.m, "fqcs1")
 end
 
 return fqcs2

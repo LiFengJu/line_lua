@@ -1,21 +1,24 @@
 local r4s1 = {
-    name = "idle state"
+    name = "r4s1",
+    func = "idle",
+    m = nil,
 }
+function r4s1:init_subscribe()
+    bus:subscribe('z3','left',function()
+        r4s1:onEvent()
+    end)
+end
 
 function r4s1:execute(m)
-    self.m = m
-    print("r4s1.execute")
-    --print("三色灯状态", m.conf.plc:readI16(27,16))
-    --print("订单号", m.conf.plc:readString(26,0,8))
+    --print(m.name..' is '..self.func)
 end
 
 function r4s1:exit(m)
     print("r4s1.exit is called")
 end
 
-function r4s1:onEvent(m, event)
-    print("---------", m, event)
-    changeState(m, "r4s2")
+function r4s1:onEvent(event)
+    changeState(self.m, "r4s2")
 end
 
 return r4s1

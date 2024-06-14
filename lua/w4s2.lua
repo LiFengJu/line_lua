@@ -1,18 +1,28 @@
 local w4s2 = {
-    name = "w4 up"
+    name = "w4s2",
+    func = 'writing_B',
+    m = nil,
 }
 
+function w4s2:init_subscribe()
+
+end
+
 function w4s2:execute(m)
-    print(self.name, "w4s2.execute")
+    print(m.name..' is '..self.func)
+    timer.push(10, function()
+        print(m.name..' finished')
+        self:onEvent()
+        bus:publish(m.name,'finished')
+    end)
 end
 
 function w4s2:exit(m)
-    print("w4s1.exit is called")
+    print("w4s2.exit is called")
 end
 
-function w4s2:onEvent(m, event)
-    print("w4s2:onEvent", m.name, event.target, event.data.value)
-    --changeState(m, "w4s3")
+function w4s2:onEvent(data)
+    changeState(self.m, "w4s1")
 end
 
 return w4s2

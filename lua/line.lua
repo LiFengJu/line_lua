@@ -6,7 +6,7 @@
 --- line »·–‘œﬂ
 ---
 local line = {
-    machines = { "r1", "r2", "r3", "r4", "w1", "w2", "w3", "w4", "z1", "z2", "t1", "t2", "fqc", "led" },
+    machines = { "r1", "r2", "r3", "r4", "w1", "w2", "w3", "w4", 'z3', "fqc" },
     name = "am516",
 }
 

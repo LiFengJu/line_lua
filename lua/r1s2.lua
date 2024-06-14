@@ -1,20 +1,17 @@
 local r1s2 = {
     name = "r1s2",
-    func = 'finding',
+    func = 'finding order',
     m = nil,
 }
 
 function r1s2:init_subscribe()
-    bus:subscribe('r1', 'found', function()
-        r1s2:onEvent()
-    end)
 end
 
 function r1s2:execute(m)
     print(m.name..' is '..self.func)
-    time.push(2, function()
-        print(m.name..'found')
-        bus:publish(m.name, 'found')
+    timer.push(5,function()
+        print(m.name..' found')
+        self:onEvent()
     end)
 end
 
