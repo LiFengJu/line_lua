@@ -19,6 +19,7 @@ function r4s3:exit(m)
 end
 
 function r4s3:onEvent(data)
+    state:addProduct()
     changeState(self.m, "r4s1")
 end
 

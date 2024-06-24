@@ -22,6 +22,7 @@ function r1s3:exit(m)
 end
 
 function r1s3:onEvent(data)
+    state:cutStock()
     changeState(self.m, "r1s1")
     print('order is moving to z1')
     timer.push(4, function()

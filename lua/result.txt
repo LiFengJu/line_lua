@@ -1,0 +1,40 @@
+lua inside
+main.Run
+state is changed
+r1 is finding order
+r1 found
+r1 is loading to line
+r1 loaded
+order is moving to z1
+order arrive z1
+r2 is finding order
+r2 found
+r2 is loading order to w1
+r2 loaded
+w1 is writing_A
+w1 finished
+r2 is unloading order from w1 to line
+r2 unloaded
+order is moving to z2
+order arrive z2
+r3 is finding order
+r3 found
+r3 is loading order to w3
+r3 loaded
+w3 is writing_B
+w3 finished
+r3 is unloading order from w3 to line
+r3 unloaded
+order is moving z3
+order arrive z3
+fqc is checking
+fqc checked
+z3 is down
+order left
+r4 is finding order
+r4 found
+r4 is unloading from line
+the next order start
+
+
+##下面还有，重复上面过程
